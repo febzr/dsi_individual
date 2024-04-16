@@ -42,7 +42,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Text('A random AWESOME idea:'),
+          BigCard(pair: pair),
           Card(
             color: theme.colorScheme.primary,
             child: Padding(
@@ -59,6 +59,29 @@ class MyHomePage extends StatelessWidget {
         ],
       ),
       
+    );
+  }
+}
+
+class BigCard extends StatelessWidget {
+  const BigCard({
+    super.key,
+    required this.pair,
+  });
+
+  final WordPair pair;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final style = theme.textTheme.displayMedium!.copyWith(
+      color: theme.colorScheme.onPrimary,
+    );
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Text(pair.asLowerCase, style: style),
+      ),
     );
   }
 }
